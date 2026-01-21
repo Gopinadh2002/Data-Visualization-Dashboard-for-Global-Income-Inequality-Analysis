@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BI Dashboard Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide-static@latest/dist/lucide.min.js"></script>
+</head>
+<body>
+
+    <div id="auth-view">
+        <div class="auth-container">
+            <form id="login-form" class="auth-form active">
+                <h2>Login to Portal</h2>
+                <p id="login-message" class="message"></p>
+                <div class="form-group"><label for="login-username">Username</label><input type="text" id="login-username" required></div>
+                <div class="form-group"><label for="login-password">Password</label><input type="password" id="login-password" required></div>
+                <button type="submit" class="btn primary">Login</button>
+                <p class="form-switcher">No account? <a href="#" id="show-signup">Sign Up</a></p>
+            </form>
+            <form id="signup-form" class="auth-form">
+                <h2>Create Account</h2>
+                <p id="signup-message" class="message"></p>
+                <div class="form-group"><label for="signup-username">Username</label><input type="text" id="signup-username" required></div>
+                <div class="form-group"><label for="signup-password">Password</label><input type="password" id="signup-password" required></div>
+                <button type="submit" class="btn primary">Sign Up</button>
+                <p class="form-switcher">Already have an account? <a href="#" id="show-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="app-view" class="app-container" style="display: none;">
+        <aside class="sidebar">
+            <div class="sidebar-header"><i data-lucide="layout-dashboard"></i><h2>Power BI portal</h2></div>
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-link active"><i data-lucide="bar-chart-2"></i><span>Dashboard</span></a>
+                <a href="#profile" class="nav-link"><i data-lucide="user"></i><span>Profile</span></a>
+                <a href="#feedback" class="nav-link"><i data-lucide="message-square-quote"></i><span>Feedback</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#profile" class="user-profile-link">
+                    <div class="user-profile"><i data-lucide="user-circle"></i><span id="username-display"></span></div>
+                </a>
+                <button id="logout-btn" class="btn logout-btn"><i data-lucide="log-out"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section id="dashboard" class="page active">
+                <h1>Global Inequality Dashboard</h1>
+                <p class="subtitle">An interactive look at our key metrics.</p>
+                <div class="dashboard-container"><iframe id="powerbi-iframe" title="Power BI Report" width="100%" height="600" 
+                    src="https://app.powerbi.com/reportEmbed?reportId=7b9a5549-f810-4647-81de-896af46de6e7&autoAuth=true&ctid=bf4c4a22-6fa6-4f8a-b416-2e9b29f5722f" frameborder="0" allowFullScreen="true"></iframe></div>
+            </section>
+
+            <section id="profile" class="page">
+                <h1>My Profile</h1>
+                <p class="subtitle">Manage your account details and security settings.</p>
+                <div class="profile-container">
+                    <div class="profile-card card">
+                        <img src="https://i.pravatar.cc/200" alt="User Avatar" class="profile-avatar">
+                        <h2 id="profile-username-display">{{Username}}</h2>
+                        <p id="profile-email-display" class="profile-email">username@example.com</p>
+                        <div class="profile-stat"><span>Joined on:</span><strong>Sep 23, 2025</strong></div>
+                    </div>
+                    <div class="profile-settings card">
+                        <div class="tabs">
+                            <button class="tab-link active" data-tab="edit-profile">Edit Profile</button>
+                            <button class="tab-link" data-tab="change-password">Change Password</button>
+                        </div>
+                        <div id="edit-profile" class="tab-content active">
+                            <h3>Personal Information</h3>
+                            <form id="edit-profile-form" class="settings-form">
+                                <div class="form-group"><label for="profile-name">Full Name</label><input type="text" id="profile-name" value="Gopinadh"></div>
+                                <div class="form-group"><label for="profile-email-input">Email Address</label><input type="email" id="profile-email-input" value="gopinadh@example.com"></div>
+                                <button type="submit" class="btn primary">Save Changes</button>
+                            </form>
+                        </div>
+                        <div id="change-password" class="tab-content">
+                            <h3>Security Settings</h3>
+                            <form id="change-password-form" class="settings-form">
+                                <div class="form-group"><label for="current-password">Current Password</label><input type="password" id="current-password" required></div>
+                                <div class="form-group"><label for="new-password">New Password</label><input type="password" id="new-password" required></div>
+                                <div class="form-group"><label for="confirm-password">Confirm New Password</label><input type="password" id="confirm-password" required></div>
+                                <button type="submit" class="btn primary">Update Password</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="feedback" class="page">
+                <h1>Share Your Thoughts</h1>
+                <p class="subtitle">Your feedback helps us improve the portal.</p>
+                <div class="card">
+                    <form id="feedback-form">
+                        <p id="feedback-message" class="message"></p>
+                        <div class="form-group">
+                            <label for="feedback-type">Feedback Type</label>
+                            <select id="feedback-type" required><option>Bug Report</option><option>Feature Request</option><option>General Comment</option></select>
+                        </div>
+                        <div class="form-group"><label for="subject">Subject</label><input type="text" id="subject" placeholder="e.g., Chart data is incorrect" required></div>
+                        <div class="form-group"><label for="details">Details</label><textarea id="details" rows="5" placeholder="Please describe in detail..." required></textarea></div>
+                        <button type="submit" class="btn primary">Submit Feedback</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div class="chatbot-container">
+        <div class="chatbot-window">
+            <div class="chatbot-header"><h3>Support Assistant</h3><p>How can we help you today?</p></div>
+            <div class="chatbot-body"><div class="chat-message bot"><p>Hello! I'm here to help. You can ask me about navigating the dashboard or submitting feedback.</p></div></div>
+            <div class="chatbot-footer"><input type="text" placeholder="Type a message..."><button><i data-lucide="send"></i></button></div>
+        </div>
+        <div class="chatbot-button" id="chatbot-button"><i data-lucide="message-circle" class="icon-open"></i><i data-lucide="x" class="icon-close"></i></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

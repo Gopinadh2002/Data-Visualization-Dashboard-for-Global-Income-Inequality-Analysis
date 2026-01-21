@@ -1,0 +1,96 @@
+:root {
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --color-primary: #3A4D94;
+    --color-accent: #FF6B6B;
+    --color-bg: #F8F9FA;
+    --color-bg-light: #FFFFFF;
+    --color-text: #212529;
+    --color-text-muted: #6c757d;
+    --color-border: #dee2e6;
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); background-color: var(--color-bg); color: var(--color-text); }
+h1, h2, h3 { font-family: var(--font-heading); }
+i[data-lucide] { width: 20px; height: 20px; }
+
+/* --- AUTHENTICATION STYLES --- */
+#auth-view { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.auth-container { width: 100%; max-width: 400px; background: var(--color-bg-light); padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow); }
+.auth-form { display: none; }
+.auth-form.active { display: block; animation: fadeIn 0.5s; }
+.auth-form h2 { text-align: center; margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.form-group input { width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--color-border); font-family: var(--font-body); }
+.btn { width: 100%; padding: 0.8rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background-color 0.2s; }
+.btn.primary { background-color: var(--color-primary); color: white; }
+.form-switcher { text-align: center; margin-top: 1rem; font-size: 0.9rem; }
+.form-switcher a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+.message { text-align: center; padding: 0.5rem; margin-bottom: 1rem; border-radius: 6px; font-weight: 500; min-height: 1.5rem; }
+.message.success { background-color: #d4edda; color: #155724; }
+.message.error { background-color: #f8d7da; color: #721c24; }
+
+/* --- MAIN APP STYLES --- */
+.app-container { display: flex; min-height: 100vh; }
+.sidebar { width: 250px; background-color: var(--color-bg-light); border-right: 1px solid var(--color-border); display: flex; flex-direction: column; padding: 1.5rem 1rem; }
+.sidebar-header { display: flex; align-items: center; gap: 0.75rem; padding: 0 0.5rem 1.5rem; color: var(--color-primary); }
+.sidebar-header h2 { font-size: 1.5rem; }
+.sidebar-nav { flex-grow: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+.nav-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border-radius: 8px; text-decoration: none; color: var(--color-text-muted); font-weight: 500; cursor: pointer; }
+.nav-link:hover { background-color: #f1f3f5; }
+.nav-link.active { background-color: var(--color-primary); color: white; }
+.sidebar-footer { padding-top: 1rem; border-top: 1px solid var(--color-border); }
+.user-profile { display: flex; align-items: center; gap: 0.75rem; font-weight: 600; }
+.logout-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; background-color: #f1f3f5; color: var(--color-text); }
+.logout-btn:hover { background-color: #e9ecef; }
+.main-content { flex-grow: 1; padding: 2rem; overflow-y: auto; }
+.page { display: none; }
+.page.active { display: block; animation: fadeIn 0.5s; }
+.subtitle { color: var(--color-text-muted); margin-top: 0.25rem; margin-bottom: 2rem; }
+.dashboard-container { background: var(--color-bg-light); padding: 1rem; border-radius: 12px; border: 1px solid var(--color-border); box-shadow: var(--shadow); }
+.card { background-color: var(--color-bg-light); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow); }
+form select, form textarea { width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--color-border); font-family: var(--font-body); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- PROFILE PAGE STYLES --- */
+.profile-container { display: grid; grid-template-columns: 300px 1fr; gap: 1.5rem; align-items: start; }
+.profile-card { text-align: center; padding: 2rem 1.5rem; }
+.profile-avatar { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 1rem; border: 3px solid var(--color-primary); }
+.profile-card h2 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+.profile-email { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+.profile-stat { background-color: var(--color-bg); padding: 0.75rem; border-radius: 8px; font-size: 0.9rem; text-align: left; }
+.profile-stat span { color: var(--color-text-muted); }
+.profile-settings { padding: 0; }
+.tabs { display: flex; border-bottom: 1px solid var(--color-border); padding: 0 1.5rem; }
+.tab-link { padding: 1rem 0.5rem; border: none; background: none; cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 1rem; color: var(--color-text-muted); margin-right: 1.5rem; border-bottom: 3px solid transparent; }
+.tab-link.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+.tab-content { display: none; padding: 1.5rem; animation: fadeIn 0.5s; }
+.tab-content.active { display: block; }
+.tab-content h3 { margin-bottom: 1.5rem; }
+.settings-form .btn { width: auto; padding: 0.7rem 1.5rem; margin-top: 1rem; }
+.user-profile-link { text-decoration: none; color: inherit; display: block; border-radius: 8px; padding: 0.5rem; transition: background-color 0.2s; }
+.user-profile-link:hover { background-color: #f1f3f5; }
+
+/* --- CHATBOT STYLES --- */
+.chatbot-button { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background-color: var(--color-accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.2s, background-color 0.2s; z-index: 1000; }
+.chatbot-button:hover { transform: scale(1.1); }
+.chatbot-button i { transition: opacity 0.2s, transform 0.2s; position: absolute; }
+.chatbot-button .icon-close { opacity: 0; transform: rotate(-90deg); }
+.chatbot-container.open .chatbot-button { background-color: #e05a5a; }
+.chatbot-container.open .chatbot-button .icon-open { opacity: 0; transform: rotate(90deg); }
+.chatbot-container.open .chatbot-button .icon-close { opacity: 1; transform: rotate(0deg); }
+.chatbot-window { position: fixed; bottom: 6.5rem; right: 2rem; width: 350px; height: 450px; background-color: var(--color-bg-light); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; transform: scale(0.95) translateY(10px); opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 999; }
+.chatbot-container.open .chatbot-window { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+.chatbot-header { padding: 1rem; background-color: var(--color-primary); color: white; }
+.chatbot-header p { font-size: 0.85rem; opacity: 0.9; }
+.chatbot-body { flex-grow: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
+.chat-message { max-width: 80%; padding: 0.75rem; border-radius: 12px; line-height: 1.4; }
+.chat-message.bot { background-color: #e9ecef; color: var(--color-text); border-top-left-radius: 0; align-self: flex-start; }
+.chat-message.user { background-color: var(--color-primary); color: white; border-top-right-radius: 0; align-self: flex-end; }
+.chatbot-footer { display: flex; padding: 0.75rem; border-top: 1px solid var(--color-border); background-color: var(--color-bg-light); }
+.chatbot-footer input { flex-grow: 1; border: 1px solid var(--color-border); border-right: none; border-radius: 8px 0 0 8px; margin: 0; padding: 0.6rem; }
+.chatbot-footer button { border-radius: 0 8px 8px 0; background-color: var(--color-primary); color: white; border: none; padding: 0 1rem; cursor: pointer; display:flex; align-items: center; }
